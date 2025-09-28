@@ -1,12 +1,15 @@
+#!/usr/bin/python3
 import requests as req
 import json
 from datetime import date
-url1 = 'https://api.football-data.org/v2/'
+
+url1 = 'https://api.football-data.org/v4/'
 key = "a7716a05f3574d5a8f413c35354b5fd5"
 
 def fixtures(key):
-    url = 'http://api.football-data.org/v3/teams/86/matches?status=SCHEDULED&limit=1'
+    url = 'http://api.football-data.org/v4/teams/86/matches?status=SCHEDULED&limit=1'
     headers = {'X-Auth-Token':key}
+
     try:
         response = req.get(url,headers=headers)
         match = response.json()['matches'][0]
@@ -28,10 +31,10 @@ today = date.today().strftime("%d")
 with open("/home/phaetan/atiqxe/scripts/real_fix_indicator/text.txt","r+") as file:
     if match_date != today:
         file.truncate(0)
-        file.write("")
+        file.write("󱑀")
         file.close()
     else:
         file.truncate(0)
-        file.write("  ")
+        file.write("󰠴")
         file.close()
 

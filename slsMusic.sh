@@ -3,8 +3,8 @@ while :
 do
     prevCurrent=$(cat currenTrack.txt)
     current=$(mpc current)
-    if [ "$curren" != "$prevCurrent" ]; then
-        echo $current > ~/atiqxe/scripts/currenTrack.txt
+    if [ "$current" != "$prevCurrent" ]; then
+        echo ♭ $current ♯ > ~/atiqxe/scripts/currenTrack.txt
     fi
-    sleep 1s
+    sleep 5s
 done
