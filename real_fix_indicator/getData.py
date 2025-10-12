@@ -2,7 +2,8 @@
 import requests as req
 import json
 from datetime import date
-url1 = 'https://api.football-data.org/v2/'
+
+url1 = 'https://api.football-data.org/v4/'
 key = ""
 
 def fixtures(key):
