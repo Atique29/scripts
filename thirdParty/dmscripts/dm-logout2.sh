@@ -52,10 +52,10 @@ check_pacman_lock() {
 main() {
     # An array of options to choose.
     declare -a options=(
-    "Lock screen"
-    "Logout"
-    "Reboot"
     "Shutdown"
+    "Reboot"
+    "Logout"
+    "Lock screen"
     "Suspend"
     "Quit"
     )
@@ -78,7 +78,7 @@ main() {
     case $choice in
         'Logout')
             check_pacman_lock
-            if [[ "$(echo -e "No\nYes" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
+            if [[ "$(echo -e "Yes\nNo" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
                 for manager in "${MANAGERS[@]}"; do
                     killall "${manager}" || output "Process ${manager} was not running."
                 done
@@ -92,7 +92,7 @@ main() {
             ;;
         'Reboot')
             check_pacman_lock
-            if [[ "$(echo -e "No\nYes" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
+            if [[ "$(echo -e "Yes\nNo" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
                 systemctl reboot
             else
                 output "User chose not to reboot." && exit 0
@@ -100,7 +100,7 @@ main() {
             ;;
         'Shutdown')
             check_pacman_lock
-            if [[ "$(echo -e "No\nYes" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
+            if [[ "$(echo -e "Yes\nNo" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
                 systemctl poweroff
             else
                 output "User chose not to shutdown." && exit 0
@@ -108,7 +108,7 @@ main() {
             ;;
         'Suspend')
             check_pacman_lock
-            if [[ "$(echo -e "No\nYes" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
+            if [[ "$(echo -e "Yes\nNo" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
                 systemctl suspend
             else
                 output "User chose not to suspend." && exit 0
