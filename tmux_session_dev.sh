@@ -1,6 +1,10 @@
 #!/bin/bash
 
-SESSION="code"
+if [ -z $1 ]; then
+    SESSION="code"
+else
+    SESSION=$1
+fi
 
 tmux has-session -t $SESSION 2>/dev/null
 
