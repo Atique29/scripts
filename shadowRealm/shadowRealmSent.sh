@@ -1,4 +1,5 @@
-winInfo=$(xwininfo) 
+activeWin=$(xdotool getactivewindow)
+winInfo=$(xwininfo -id "$activeWin") 
 winName=$(echo "$winInfo" | grep "id:" |  cut -d " " -f 5-)
 winId=$(echo "$winInfo" | grep "id:" | cut -d " " -f 4)
 #winId=$(xdotool getactivewindow)
