@@ -39,7 +39,6 @@ output(){
     ${_out} "dm-logout" "$@"
 }
 
-# --- SAFETY NET ADDED HERE ---
 # Checks for the pacman lock file to prevent actions during an update.
 check_pacman_lock() {
     if [ -f "/var/lib/pacman/db.lck" ]; then
@@ -47,7 +46,6 @@ check_pacman_lock() {
         exit 1
     fi
 }
-# --- END OF SAFETY NET ---
 
 main() {
     # An array of options to choose.
