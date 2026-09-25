@@ -15,7 +15,7 @@ set -euo pipefail
 
 # shellcheck disable=SC1091
 
-DMENU="dmenu -i -l 5 -nb #1c1c1c -nf #fbf1c7 -sb #fbf1c7 -sf #1c1c1c -fn 'JetBrainsMono:pixelsize=18' -p"
+DMENU="dmenu -i -l 5 -nb #1c1c1c -nf #fbf1c7 -sb #fbf1c7 -sf #1c1c1c -fn 'JetBrainsMono:pixelsize=16' -p"
 
 
 bookman_show_source=1

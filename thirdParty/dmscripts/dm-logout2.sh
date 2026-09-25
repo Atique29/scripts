@@ -42,7 +42,7 @@ output(){
 # Checks for the pacman lock file to prevent actions during an update.
 check_pacman_lock() {
     if [ -f "/var/lib/pacman/db.lck" ]; then
-        output " Oh Shoot, Pacman is running. This precaution u took saved your life!"
+        output " Oh Shoot, Pacman is running. Almost shot yourself in the foot, pheww"
         exit 1
     fi
 }
