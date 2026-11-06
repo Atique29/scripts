@@ -7,7 +7,7 @@ do
     artist=$(echo "$metadata" | grep artist | awk '{$1=""; $2=""}1')
     current=$(echo "$metadata" | grep title | awk '{$1=""; $2=""}1')
     if [ "$current" != "$prevCurrent" ]; then
-        echo ♯ $artist — $current > ~/atiqxe/scripts/currenTrack.txt
+        echo $artist "|" $current > /home/phaetan/atiqxe/scripts/currenTrack.txt
     fi
     sleep 5s
 done

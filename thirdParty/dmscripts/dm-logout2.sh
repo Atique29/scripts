@@ -47,6 +47,15 @@ check_pacman_lock() {
     fi
 }
 
+# Blocks actions while windows are hidden in the shadow realm.
+check_shadows() {
+    local buffer="/home/phaetan/atiqxe/scripts/shadowRealm/shadows.txt"
+    if [ -s "$buffer" ]; then
+        output "Windows are still in the shadow realm ($(wc -l < "$buffer") hidden)"
+        exit 1
+    fi
+}
+
 main() {
     # An array of options to choose.
     declare -a options=(
@@ -76,6 +85,7 @@ main() {
     case $choice in
         'Logout')
             check_pacman_lock
+            check_shadows
             if [[ "$(echo -e "Yes\nNo" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
                 for manager in "${MANAGERS[@]}"; do
                     killall "${manager}" || output "Process ${manager} was not running."
@@ -90,6 +100,7 @@ main() {
             ;;
         'Reboot')
             check_pacman_lock
+            check_shadows
             if [[ "$(echo -e "Yes\nNo" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
                 systemctl reboot
             else
@@ -98,6 +109,7 @@ main() {
             ;;
         'Shutdown')
             check_pacman_lock
+            check_shadows
             if [[ "$(echo -e "Yes\nNo" | ${DMENU} "${choice}?" "${@}" )" == "Yes" ]]; then
                 systemctl poweroff
             else
